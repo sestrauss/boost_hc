@@ -166,10 +166,10 @@
                 	{{/hasidentityproviders}}
 				</div>	{{!end auth login card}}
 				
-											<div class="card text-center border-light">
+									<div class="card text-center border-light">
 													<div class="card-body">
 													<div class="card-title">				 
-							                             <h4>Other accounts</h4>
+							                             <h4>Sys Admin Only</h4>
 														</div>
 									                <form class="mt-3" action="{{loginurl}}" method="post" id="login">
 									                    <input id="anchor" type="hidden" name="anchor" value="">
@@ -228,15 +228,15 @@
 						                        </form>
 						                    </div>
 										</div>
-									</div>
+									</div> {{!end sys admin area}}
 						                {{/canloginasguest}}      
-									</div>
+									
+				</div> 
+				<div class="col-12 col-md-6">
 				
 									{{#hasinstructions}}
-					
-					    
 									            <div class="card border-light">
-									                <div class="card-body text-center">
+									                <div class="card-body">
 									                    <div class="card-title text-info">
 									                        <h4>{{#str}}firsttime{{/str}}</h4>
 									                    </div> {{!instruction header}}
@@ -249,10 +249,11 @@
 									               </div>{{!instructions card body}}
 						   	  
 									{{/hasinstructions}}
+				</div> {{!instruction card column}}					
 
 			           
-							</div> {{!login card column}}
-
+							
+						</div>
 					</div> {{!end card body}}	
 				</div> {{!End card}}
 
