@@ -21,13 +21,12 @@
  * This template is based on Boost for use at Haveroford College. It's primary 
  * role is to customize the login page. Thanks to Andrea Kaldrovics at Bryn Mawr 
  * College for her help in developing this child theme. Thanks also to Kristian 
- * Ringer for his excellent explainations on YouTube.
+ * Ringer for his excellent explainations on YouTube, https://youtu.be/WLa1ZS3kdWU.
  *
  * @package     theme_boost_hc
- * @copyright   2021, Haverford College
+ * @copyright   2022, Haverford College
  * @author      Sharon Strauss
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  */
  
 

@@ -21,10 +21,10 @@
  * This template is based on Boost for use at Haveroford College. It's primary 
  * role is to customize the login page. Thanks to Andrea Kaldrovics at Bryn Mawr 
  * College for her help in developing this child theme. Thanks also to Kristian 
- * Ringer for his excellent explainations on YouTube.
+ * Ringer for his excellent explainations on YouTube, https://youtu.be/WLa1ZS3kdWU.
  *
  * @package     theme_boost_hc
- * @copyright   2021, Haverford College
+ * @copyright   2022, Haverford College
  * @author      Sharon Strauss
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -33,9 +33,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_boost_hc';
-$plugin->version = 2021060700;
-$plugin->release = 'v1.1';
-$plugin->requires = 2020110900;
-$plugin->supported = [310, 310];
-$plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = array('theme_boost' => 2020110900);
+$plugin->version = 2022030100;
+$plugin->release = 'v2.0';
+$plugin->requires = '2016070700';   
+$plugin->dependencies = [
+    'theme_boost' => '2016102100'
+     ];

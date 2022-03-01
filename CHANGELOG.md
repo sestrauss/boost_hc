@@ -13,3 +13,8 @@
 	version 1.0:  
 
 	first release
+	
+2022-02-23
+	version 2.0
+	updated for Moodle 3.11
+	modify login page to make admin log-in less noticiable. 
