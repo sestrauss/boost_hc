@@ -18,3 +18,7 @@
 	version 2.0
 	updated for Moodle 3.11
 	modify login page to make admin log-in less noticiable. 
+	
+2022-03-22
+	version 2.1
+	slight update to make login page easier to read; added left border between instructions and login buttons
