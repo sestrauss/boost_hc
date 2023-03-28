@@ -24,7 +24,7 @@
  * Ringer for his excellent explainations on YouTube, https://youtu.be/WLa1ZS3kdWU.
  *
  * @package     theme_boost_hc
- * @copyright   2022, Haverford College
+ * @copyright   2023, Haverford College
  * @author      Sharon Strauss
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -33,9 +33,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_boost_hc';
-$plugin->version = 2022032200;
-$plugin->release = 'v2.1';
-$plugin->requires = '2016070700';   
+$plugin->version = 2023032800;
+$plugin->release = 'v3.0';
+$plugin->requires = '2022111800';   
 $plugin->dependencies = [
-    'theme_boost' => '2016102100'
+    'theme_boost' => '2022112800'
      ];

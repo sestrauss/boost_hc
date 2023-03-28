@@ -24,7 +24,7 @@
  * Ringer for his excellent explainations on YouTube, https://youtu.be/WLa1ZS3kdWU.
  *
  * @package     theme_boost_hc
- * @copyright   2022, Haverford College
+ * @copyright   2023, Haverford College
  * @author      Sharon Strauss
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
