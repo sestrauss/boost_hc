@@ -33,8 +33,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_boost_hc';
-$plugin->version = 2023032800;
-$plugin->release = 'v3.0';
+$plugin->version = 2023032801;
+$plugin->release = 'v3.0beta';
 $plugin->requires = '2022111800';   
 $plugin->dependencies = [
     'theme_boost' => '2022112800'
