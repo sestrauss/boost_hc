@@ -1,24 +1,22 @@
 {{!
-    This file is part of Moodle - http://moodle.org/
+    This file is a modified version of the the loginform.mustache in the
+    Moodle/lib/templates github repository.
 
     Moodle is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     Moodle is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
+
 {{!
     @template core/loginform
-
     Moodle template for the login page.
-
     Context variables required for this template:
     * autofocusform: Auto focus on form ?,
     * canloginasguest - Is guest login allowed?,
@@ -39,7 +37,6 @@
     * sitename - Name of site.,
     * logintoken - Random token to protect login request.,
     * maintenance - Maintenance message
-
     Example context (json):
     {
         "autofocusform": false,
@@ -112,7 +109,13 @@
         <a href="#" id="loginerrormessage" class="sr-only">{{error}}</a>
         <div class="alert alert-danger" role="alert">{{error}}</div>
     {{/error}}
-       {{#hasidentityproviders}}
+	
+
+	
+
+	
+	
+    {{#hasidentityproviders}}
         <div class="login-divider"></div>
         <div class="login-identityproviders">
             <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
@@ -161,43 +164,43 @@
         }} data-modal-title-str='["cookiesenabled", "core"]' {{!
         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
         }}>{{#str}}cookiesnotice{{/str}}</button>
+	    {{#cansignup}}
+	        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
+	    {{/cansignup}}
+	    <form class="login-form" action="{{loginurl}}" method="post" id="login">
+	        <input type="hidden" name="logintoken" value="{{logintoken}}">
+	        <div class="login-form-username form-group">
+	            <label for="username" class="sr-only">
+	                {{^canloginbyemail}}
+	                    {{#str}} username {{/str}}
+	                {{/canloginbyemail}}
+	                {{#canloginbyemail}}
+	                    {{#str}} usernameemail {{/str}}
+	                {{/canloginbyemail}}
+	            </label>
+	            <input type="text" name="username" id="username" {{!
+	                !}}class="form-control form-control-lg" {{!
+	                !}}value="{{username}}" {{!
+	                !}}placeholder="{{^canloginbyemail}}{{#cleanstr}}username{{/cleanstr}}{{/canloginbyemail}}{{!
+	                !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
+	                !}}autocomplete="username">
+	        </div>
+	        <div class="login-form-password form-group">
+	            <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
+	            <input type="password" name="password" id="password" value="" {{!
+	                !}}class="form-control form-control-lg" {{!
+	                !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
+	                !}}autocomplete="current-password">
+	        </div>
+	        <div class="login-form-submit form-group">
+	            <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
+	        </div>
+	        <div class="login-form-forgotpassword form-group">
+	            <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
+	        </div>
+	    </form>
+		
     </div>
-    {{#cansignup}}
-        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
-    {{/cansignup}}
-    <form class="login-form" action="{{loginurl}}" method="post" id="login">
-        <input type="hidden" name="logintoken" value="{{logintoken}}">
-        <div class="login-form-username form-group">
-            <label for="username" class="sr-only">
-                {{^canloginbyemail}}
-                    {{#str}} username {{/str}}
-                {{/canloginbyemail}}
-                {{#canloginbyemail}}
-                    {{#str}} usernameemail {{/str}}
-                {{/canloginbyemail}}
-            </label>
-            <input type="text" name="username" id="username" {{!
-                !}}class="form-control form-control-lg" {{!
-                !}}value="{{username}}" {{!
-                !}}placeholder="{{^canloginbyemail}}{{#cleanstr}}username{{/cleanstr}}{{/canloginbyemail}}{{!
-                !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
-                !}}autocomplete="username">
-        </div>
-        <div class="login-form-password form-group">
-            <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
-            <input type="password" name="password" id="password" value="" {{!
-                !}}class="form-control form-control-lg" {{!
-                !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
-                !}}autocomplete="current-password">
-        </div>
-        <div class="login-form-submit form-group">
-            <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
-        </div>
-        <div class="login-form-forgotpassword form-group">
-            <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
-        </div>
-    </form>
-	
 </div>
 
 {{#js}}
