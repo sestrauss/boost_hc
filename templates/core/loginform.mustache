@@ -1,7 +1,6 @@
 {{!
     This file is a modified version of the the loginform.mustache in the
     Moodle/lib/templates github repository.
-
     Moodle is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -167,7 +166,6 @@
         }} data-modal-title-str='["cookiesenabled", "core"]' {{!
         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
         }}>{{#str}}cookiesnotice{{/str}}</button>
-		</div></div>
 	    {{#cansignup}}
 	        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
 	    {{/cansignup}}
@@ -202,8 +200,8 @@
 	        
 	    </form>
 		
-
-
+    </div>
+</div>
 
 {{#js}}
     {{^error}}
