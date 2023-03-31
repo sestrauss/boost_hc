@@ -174,7 +174,7 @@
  {{!end row with login options and instruction}}
  
  {{!row for lang and cookie info}}
- <div class="row justify-content-md md-5 my-5">
+ <div class="container-fluid justify-content-md md-5 my-5">
      
      <div>
      <div class="login-divider"></div>
@@ -184,11 +184,14 @@
              </div>
              <div class="align-self-center mx-3"></div>
          {{/languagemenu}}
+	  {{!cookie div}}	 
+	   <div> 
          <button type="button" class="btn btn-secondary btn-sm" {{!
          }} data-modal="alert"{{!
          }} data-modal-title-str='["cookiesenabled", "core"]' {{!
          }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
          }}>{{#str}}cookiesnotice{{/str}}</button>
+	  </div>
  	    {{#cansignup}}
  	        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
  	    {{/cansignup}}
