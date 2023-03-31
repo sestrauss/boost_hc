@@ -95,7 +95,10 @@
             {{{maintenance}}}
         </div>
     {{/maintenance}}
-
+    {{#error}}
+        <a href="#" id="loginerrormessage" class="sr-only">{{error}}</a>
+        <div class="alert alert-danger" role="alert">{{error}}</div>
+    {{/error}}
 	
     <div class="card-block">
         {{#logourl}}
@@ -114,11 +117,6 @@
                     <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
                 </div>
             {{/cansignup}}
-
-	       {{#error}}
-	           <a href="#" id="loginerrormessage" class="sr-only">{{error}}</a>
-	           <div class="alert alert-danger" role="alert">{{error}}</div>
-	       {{/error}}
 
             <div class="row justify-content-md-center">
                 <div class="col-md-5 my-3">
@@ -201,6 +199,7 @@
             </div>
         </div>
 		{{!end div set on main instruction card with primary login info}}
+		<h2>Sys Admins Only</h2>
 	    <form class="login-form" action="{{loginurl}}" method="post" id="login">
 	        <input type="hidden" name="logintoken" value="{{logintoken}}">
 	        <div class="login-form-username form-group">
