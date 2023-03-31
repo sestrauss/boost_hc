@@ -112,12 +112,12 @@
 
 	
 
-	{{!new columns for identity providers and instructions}}
-    <div class="row justify-content-md-center">
+	{{!using flex format for rows and columns}}
+    <div class="d-flex flex-column mb-2">
 	
 			
     {{!identity provider, forgot password, guest}}
-    <div class="col-md-5 my-3">
+    <div class="p-1">
 	    {{#hasidentityproviders}}
 
 		
@@ -155,7 +155,7 @@
 	
 	
     {{!instructions and signup column}}
-    <div class="col-md-5 p-3 bg-secondary">	
+    <div class="md-5 p-3 bg-secondary">	
    {{#hasinstructions}}
        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
            <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
@@ -174,7 +174,7 @@
  {{!end row with login options and instruction}}
  
  {{!row for lang and cookie info}}
- <div class="row justify-content-md md-5 my-5">
+ <div class="container-flex justify-content-md md-5 my-5">
      
      <div>
      <div class="login-divider"></div>
@@ -200,7 +200,7 @@
     </div>
 </div>
 
- <div class="row justify-content-md md-5 my-5" style="--mdb-text-opacity: .5;">
+ <div class="container-flex md-5 my-5" style="--mdb-text-opacity: .5;">
 		<h3>Sys Admins Only</h3>
 	    <form class="login-form" action="{{loginurl}}" method="post" id="login">
 	        <input type="hidden" name="logintoken" value="{{logintoken}}">
