@@ -155,7 +155,7 @@
 	
 	
     {{!instructions and signup column}}
-    <div class="col-md-5 my-3 border-left">	
+    <div class="col-md-5 p-3 bg-secondary">	
    {{#hasinstructions}}
        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
            <h2 class="login-heading text-info">{{#str}}firsttime{{/str}}</h2>
@@ -173,23 +173,32 @@
  </div>
  {{!end row with login options and instruction}}
  
-    <div class="login-divider"></div>
-    <div>
-        {{#languagemenu}}
-            <div class="login-languagemenu">
-                {{>core/action_menu}}
-            </div>
-            <div class="align-self-center mx-3"></div>
-        {{/languagemenu}}
-        <button type="button" class="btn btn-secondary btn-sm" {{!
-        }} data-modal="alert"{{!
-        }} data-modal-title-str='["cookiesenabled", "core"]' {{!
-        }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
-        }}>{{#str}}cookiesnotice{{/str}}</button>
-	    {{#cansignup}}
-	        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
-	    {{/cansignup}}
+ {{!row for lang and cookie info}}
+ <div class="row justify-content-md-center">
+     <div class="login-divider"></div>
+     <div>
+         {{#languagemenu}}
+             <div class="login-languagemenu">
+                 {{>core/action_menu}}
+             </div>
+             <div class="align-self-center mx-3"></div>
+         {{/languagemenu}}
+         <button type="button" class="btn btn-secondary btn-sm" {{!
+         }} data-modal="alert"{{!
+         }} data-modal-title-str='["cookiesenabled", "core"]' {{!
+         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
+         }}>{{#str}}cookiesnotice{{/str}}</button>
+ 	    {{#cansignup}}
+ 	        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
+ 	    {{/cansignup}}
 		
+ </div>
+ 
+
+		
+    </div>
+</div>
+
 		<h2>Sys Admins Only</h2>
 	    <form class="login-form" action="{{loginurl}}" method="post" id="login">
 	        <input type="hidden" name="logintoken" value="{{logintoken}}">
@@ -203,7 +212,7 @@
 	                {{/canloginbyemail}}
 	            </label>
 	            <input type="text" name="username" id="username" {{!
-	                !}}class="form-control form-control-lg" {{!
+	                !}}class="form-control" {{!
 	                !}}value="{{username}}" {{!
 	                !}}placeholder="{{^canloginbyemail}}{{#cleanstr}}username{{/cleanstr}}{{/canloginbyemail}}{{!
 	                !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
@@ -212,18 +221,15 @@
 	        <div class="login-form-password form-group">
 	            <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
 	            <input type="password" name="password" id="password" value="" {{!
-	                !}}class="form-control form-control-lg" {{!
+	                !}}class="form-control" {{!
 	                !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
 	                !}}autocomplete="current-password">
 	        </div>
 	        <div class="login-form-submit form-group">
-	            <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
+	            <button class="btn btn-secondary btn-sm" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
 	        </div>
 	        
 	    </form>
-		
-    </div>
-</div>
 
 {{#js}}
     {{^error}}
