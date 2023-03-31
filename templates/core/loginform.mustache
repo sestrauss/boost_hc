@@ -100,18 +100,18 @@
         <div class="alert alert-danger" role="alert">{{error}}</div>
     {{/error}}
 	
-    <div class="card-block">
+    <div>
         {{#logourl}}
-            <h1 class="h2 card-header text-center" >
+            <h1 class="h2 text-center" >
                 <span class="sr-only">{{sitename}}: {{#str}} login {{/str}}</span>
                 <img src="{{logourl}}" class="img-fluid" alt=""/>
             </h1>
         {{/logourl}}
         {{^logourl}}
-            <h1 class="h2 card-header text-center" aria-label="{{sitename}}: {{#str}} login {{/str}}">{{sitename}}</h1>
+            <h1 class="h2 text-center" aria-label="{{sitename}}: {{#str}} login {{/str}}">{{sitename}}</h1>
         {{/logourl}}
 		{{!begin card body with primary log in info}}
-        <div class="card-body">
+        <div class="container">
             {{#cansignup}}
                 <div class="sr-only">
                     <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
