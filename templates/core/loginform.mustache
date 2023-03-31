@@ -95,10 +95,7 @@
             {{{maintenance}}}
         </div>
     {{/maintenance}}
-    {{#error}}
-        <a href="#" id="loginerrormessage" class="sr-only">{{error}}</a>
-        <div class="alert alert-danger" role="alert">{{error}}</div>
-    {{/error}}
+
 	
     <div class="card-block">
         {{#logourl}}
@@ -118,12 +115,10 @@
                 </div>
             {{/cansignup}}
 
-            {{#error}}
-                <div class="loginerrors mt-3">
-                    <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
-                    <div class="alert alert-danger" role="alert" data-aria-autofocus="true">{{error}}</div>
-                </div>
-            {{/error}}
+	       {{#error}}
+	           <a href="#" id="loginerrormessage" class="sr-only">{{error}}</a>
+	           <div class="alert alert-danger" role="alert">{{error}}</div>
+	       {{/error}}
 
             <div class="row justify-content-md-center">
                 <div class="col-md-5 my-3">
