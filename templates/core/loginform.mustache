@@ -115,13 +115,14 @@
 	{{!new columns for identity providers and instructions}}
     <div class="row justify-content-md-center">
 	
-    {{#hasidentityproviders}}
-        <div class="login-divider"></div>
+
 		
 
 			
     {{!identity provider, forgot password, guest}}
     <div class="col-md-5 my-3">
+	    {{#hasidentityproviders}}
+	        <div class="login-divider"></div>
 		
         <div class="login-identityproviders">
             <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
@@ -141,16 +142,7 @@
         <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
     </div>
  
-        <div class="login-divider"></div>
-        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
-            <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
-            {{{instructions}}}
-        </div>   
-		{{#cansignup}}
-        <div class="login-signup">
-            <a class="btn btn-secondary" href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
-        </div>
-    {{/cansignup}}
+
     {{#canloginasguest}}
         <div class="login-divider"></div>
         <h2 class="login-heading">{{#str}}someallowguest{{/str}}</h2>
@@ -165,14 +157,25 @@
 	{{!end identity provider, password, guest column}}
 	
 	
-    {{!instructions column}}
+    {{!instructions and signup column}}
     <div class="col-md-5 my-3 border-left">	
-		   {{#hasinstructions}}
-           {{/hasinstructions}}
-    </div>
+   {{#hasinstructions}}
+       <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
+           <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
+           {{{instructions}}}
+       </div>
+   {{/hasinstructions}}
+   {{#cansignup}}
+       <div class="login-signup">
+           <a class="btn btn-secondary" href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
+       </div>
+   {{/cansignup}}
+      </div>
+{{!end instruction and signup column}}
 
  </div>
  {{!end row with login options and instruction}}
+ 
     <div class="login-divider"></div>
     <div>
         {{#languagemenu}}
