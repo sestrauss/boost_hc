@@ -159,7 +159,7 @@
             <div class="login-languagemenu">
                 {{>core/action_menu}}
             </div>
-            <div class="divider border-left align-self-center mx-3"></div>
+            <div class="divider align-self-center mx-3"></div>
         {{/languagemenu}}
         <button type="button" class="btn btn-secondary" {{!
         }} data-modal="alert"{{!
@@ -169,6 +169,8 @@
 	    {{#cansignup}}
 	        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
 	    {{/cansignup}}
+		
+		<h2>Sys Admins Only</h2>
 	    <form class="login-form" action="{{loginurl}}" method="post" id="login">
 	        <input type="hidden" name="logintoken" value="{{logintoken}}">
 	        <div class="login-form-username form-group">
