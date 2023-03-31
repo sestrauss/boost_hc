@@ -97,7 +97,7 @@
         </div>
     {{/logourl}}
     {{^logourl}}
-        <h1 class="login-heading login-heading p-2 text-primary text-center">{{#str}} loginto, core, {{sitename}} {{/str}}</h1>
+        <h1 class="login-heading login-heading p-2 text-primary text-center border-bottom">{{#str}} loginto, core, {{sitename}} {{/str}}</h1>
     {{/logourl}}
     {{#maintenance}}
         <div class="alert alert-danger login-maintenance">
@@ -115,10 +115,6 @@
 	{{!new columns for identity providers and instructions}}
     <div class="row justify-content-md-center">
 	
-	<div class="login-divider"></div>
-
-		
-
 			
     {{!identity provider, forgot password, guest}}
     <div class="col-md-5 my-3">
@@ -139,7 +135,7 @@
     {{/hasidentityproviders}}
 
 
-    <div class="login-form-forgotpassword form-group">
+    <div class="login-form-forgotpassword p-2 form-group">
         <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
     </div>
  
@@ -183,9 +179,9 @@
             <div class="login-languagemenu">
                 {{>core/action_menu}}
             </div>
-            <div class="divider align-self-center mx-3"></div>
+            <div class="align-self-center mx-3"></div>
         {{/languagemenu}}
-        <button type="button" class="btn btn-secondary" {{!
+        <button type="button" class="btn btn-secondary btn-sm" {{!
         }} data-modal="alert"{{!
         }} data-modal-title-str='["cookiesenabled", "core"]' {{!
         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
