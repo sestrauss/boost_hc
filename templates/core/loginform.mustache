@@ -158,7 +158,7 @@
     <div class="col-md-5 p-3 bg-secondary">	
    {{#hasinstructions}}
        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
-           <h2 class="login-heading text-info">{{#str}}firsttime{{/str}}</h2>
+           <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
            {{{instructions}}}
        </div>
    {{/hasinstructions}}
@@ -174,10 +174,11 @@
  {{!end row with login options and instruction}}
  
  {{!row for lang and cookie info}}
- <div class="row justify-content-md-center">
-     <div class="login-divider"></div>
+ <div class="row justify-content-md md-5 my-5">
+     
      <div>
-         {{#languagemenu}}
+     <div class="login-divider"></div>
+	     {{#languagemenu}}
              <div class="login-languagemenu">
                  {{>core/action_menu}}
              </div>
@@ -199,7 +200,8 @@
     </div>
 </div>
 
-		<h2>Sys Admins Only</h2>
+ <div class="row justify-content-md md-5 my-5" style="--mdb-text-opacity: .5;">
+		<h3>Sys Admins Only</h3>
 	    <form class="login-form" action="{{loginurl}}" method="post" id="login">
 	        <input type="hidden" name="logintoken" value="{{logintoken}}">
 	        <div class="login-form-username form-group">
@@ -230,7 +232,7 @@
 	        </div>
 	        
 	    </form>
-
+</div>
 {{#js}}
     {{^error}}
         {{#autofocusform}}
