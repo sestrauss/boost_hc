@@ -97,7 +97,7 @@
         </div>
     {{/logourl}}
     {{^logourl}}
-        <h1 class="login-heading mb-4">{{#str}} loginto, core, {{sitename}} {{/str}}</h1>
+        <h1 class="login-heading login-heading p-2 text-primary text-center">{{#str}} loginto, core, {{sitename}} {{/str}}</h1>
     {{/logourl}}
     {{#maintenance}}
         <div class="alert alert-danger login-maintenance">
@@ -115,6 +115,7 @@
 	{{!new columns for identity providers and instructions}}
     <div class="row justify-content-md-center">
 	
+	<div class="login-divider"></div>
 
 		
 
@@ -122,7 +123,7 @@
     {{!identity provider, forgot password, guest}}
     <div class="col-md-5 my-3">
 	    {{#hasidentityproviders}}
-	        <div class="login-divider"></div>
+
 		
         <div class="login-identityproviders">
             <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
@@ -161,7 +162,7 @@
     <div class="col-md-5 my-3 border-left">	
    {{#hasinstructions}}
        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
-           <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
+           <h2 class="login-heading text-info">{{#str}}firsttime{{/str}}</h2>
            {{{instructions}}}
        </div>
    {{/hasinstructions}}
