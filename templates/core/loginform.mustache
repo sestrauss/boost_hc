@@ -113,11 +113,11 @@
 	
 
 	{{!new columns for identity providers and instructions}}
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center mt-3">
 	
 			
     {{!identity provider, forgot password, guest}}
-    <div class="col-md-5 my-3">
+    <div class="col-md-5 mx-3">
 	    {{#hasidentityproviders}}
 
 		
@@ -155,7 +155,7 @@
 	
 	
     {{!instructions and signup column}}
-    <div class="col-md-5 p-3 bg-secondary shadow-sm rounded">	
+    <div class="col-md-5 p-3 mx-3 bg-secondary shadow-sm rounded">	
    {{#hasinstructions}}
        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
            <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
