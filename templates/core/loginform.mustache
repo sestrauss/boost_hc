@@ -1,21 +1,24 @@
 {{!
-    This file is a modified version of the the loginform.mustache in the
-    Moodle/lib/templates github repository.
+    This file is part of Moodle - http://moodle.org/
+
     Moodle is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
+
     Moodle is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
+
     You should have received a copy of the GNU General Public License
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
-
 {{!
     @template core/loginform
+
     Moodle template for the login page.
+
     Context variables required for this template:
     * autofocusform: Auto focus on form ?,
     * canloginasguest - Is guest login allowed?,
@@ -36,6 +39,7 @@
     * sitename - Name of site.,
     * logintoken - Random token to protect login request.,
     * maintenance - Maintenance message
+
     Example context (json):
     {
         "autofocusform": false,
@@ -97,7 +101,7 @@
         </div>
     {{/logourl}}
     {{^logourl}}
-        <h1 class="login-heading login-heading p-2 text-primary text-center border-bottom">{{#str}} loginto, core, {{sitename}} {{/str}}</h1>
+        <h1 class="login-heading mb-4">{{#str}} loginto, core, {{sitename}} {{/str}}</h1>
     {{/logourl}}
     {{#maintenance}}
         <div class="alert alert-danger login-maintenance">
@@ -108,23 +112,12 @@
         <a href="#" id="loginerrormessage" class="sr-only">{{error}}</a>
         <div class="alert alert-danger" role="alert">{{error}}</div>
     {{/error}}
-	
-
-	
-
-	{{!new columns for identity providers and instructions}}
-    <div class="row justify-content-md-center mt-3">
-	
-			
-    {{!identity provider, forgot password, guest}}
-    <div class="col-md-5 mx-3">
-	    {{#hasidentityproviders}}
-
-		
+    {{#hasidentityproviders}}
+        <div class="login-divider"></div>
         <div class="login-identityproviders">
             <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
             {{#identityproviders}}
-                <a class="btn btn-primary btn-block mt-1" href="{{url}}">
+                <a class="btn login-identityprovider-btn btn-block" href="{{url}}">
                     {{#iconurl}}
                         <img src="{{iconurl}}" alt="" width="24" height="24"/>
                     {{/iconurl}}
@@ -133,13 +126,55 @@
             {{/identityproviders}}
         </div>
     {{/hasidentityproviders}}
-
-
-    <div class="login-form-forgotpassword p-2 form-group">
-        <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
-    </div>
- 
-
+    {{#hasinstructions}}
+        <div class="login-divider"></div>
+        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
+            <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
+            {{{instructions}}}
+        </div>
+    {{/hasinstructions}}
+    {{#cansignup}}
+        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
+    {{/cansignup}}
+    <form class="login-form" action="{{loginurl}}" method="post" id="login">
+        <input id="anchor" type="hidden" name="anchor" value="">
+        <script>document.getElementById('anchor').value = location.hash;</script>
+        <input type="hidden" name="logintoken" value="{{logintoken}}">
+        <div class="login-form-username form-group">
+            <label for="username" class="sr-only">
+                {{^canloginbyemail}}
+                    {{#str}} username {{/str}}
+                {{/canloginbyemail}}
+                {{#canloginbyemail}}
+                    {{#str}} usernameemail {{/str}}
+                {{/canloginbyemail}}
+            </label>
+            <input type="text" name="username" id="username" {{!
+                !}}class="form-control form-control-lg" {{!
+                !}}value="{{username}}" {{!
+                !}}placeholder="{{^canloginbyemail}}{{#cleanstr}}username{{/cleanstr}}{{/canloginbyemail}}{{!
+                !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
+                !}}autocomplete="username">
+        </div>
+        <div class="login-form-password form-group">
+            <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
+            <input type="password" name="password" id="password" value="" {{!
+                !}}class="form-control form-control-lg" {{!
+                !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
+                !}}autocomplete="current-password">
+        </div>
+        <div class="login-form-submit form-group">
+            <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
+        </div>
+        <div class="login-form-forgotpassword form-group">
+            <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
+        </div>
+    </form>
+    {{#cansignup}}
+        <div class="login-signup">
+            <a class="btn btn-secondary" href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
+        </div>
+    {{/cansignup}}
     {{#canloginasguest}}
         <div class="login-divider"></div>
         <h2 class="login-heading">{{#str}}someallowguest{{/str}}</h2>
@@ -150,93 +185,22 @@
             <button class="btn btn-secondary" type="submit" id="loginguestbtn">{{#str}}loginguest{{/str}}</button>
         </form>
     {{/canloginasguest}}
+    <div class="login-divider"></div>
+    <div class="d-flex">
+        {{#languagemenu}}
+            <div class="login-languagemenu">
+                {{>core/action_menu}}
+            </div>
+            <div class="divider border-left align-self-center mx-3"></div>
+        {{/languagemenu}}
+        <button type="button" class="btn btn-secondary" {{!
+        }} data-modal="alert"{{!
+        }} data-modal-title-str='["cookiesenabled", "core"]' {{!
+        }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
+        }}>{{#str}}cookiesnotice{{/str}}</button>
     </div>
-	{{!end identity provider, password, guest column}}
-	
-	
-    {{!instructions and signup column}}
-    <div class="col-md-5 p-3 mx-3 bg-secondary shadow-sm rounded">	
-   {{#hasinstructions}}
-       <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
-           <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
-           {{{instructions}}}
-       </div>
-   {{/hasinstructions}}
-   {{#cansignup}}
-       <div class="login-signup">
-           <a class="btn btn-secondary" href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
-       </div>
-   {{/cansignup}}
-      </div>
-{{!end instruction and signup column}}
-
- </div>
- {{!end row with login options and instruction}}
- 
- {{!row for lang and cookie info}}
- <div class="container-fluid justify-content-md md-5 my-5">
-     
-     <div>
-     <div class="login-divider"></div>
-	     {{#languagemenu}}
-             <div class="login-languagemenu">
-                 {{>core/action_menu}}
-             </div>
-             <div class="align-self-center mx-3"></div>
-         {{/languagemenu}}
-	  {{!cookie div}}	 
-	   <div> 
-         <button type="button" class="btn btn-secondary btn-sm mb-5" {{!
-         }} data-modal="alert"{{!
-         }} data-modal-title-str='["cookiesenabled", "core"]' {{!
-         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
-         }}>{{#str}}cookiesnotice{{/str}}</button>
-	  </div>
- 	    {{#cansignup}}
- 	        <a href="{{signupurl}}" class="sr-only">{{#str}} tocreatenewaccount {{/str}}</a>
- 	    {{/cansignup}}
-		
- </div>
- 
-
-		
-
-
- <div class="container-fluid md-5 my-5 shadow-sm p-3 mb-5 bg-light bg-gradient rounded">
-		<h3 class="text-muted">Sys Admins Only</h3>
-	    <form class="login-form form-inline" action="{{loginurl}}" method="post" id="login">
-	        <input type="hidden" name="logintoken" value="{{logintoken}}">
-	        <div class="login-form-username form-group">
-	            <label for="username" class="sr-only">
-	                {{^canloginbyemail}}
-	                    {{#str}} username {{/str}}
-	                {{/canloginbyemail}}
-	                {{#canloginbyemail}}
-	                    {{#str}} usernameemail {{/str}}
-	                {{/canloginbyemail}}
-	            </label>
-	            <input type="text" name="username" id="username" {{!
-	                !}}class="form-control form-control-sm" {{!
-	                !}}value="{{username}}" {{!
-	                !}}placeholder="{{^canloginbyemail}}{{#cleanstr}}username{{/cleanstr}}{{/canloginbyemail}}{{!
-	                !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
-	                !}}autocomplete="username">
-	        </div>
-	        <div class="login-form-password form-group">
-	            <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
-	            <input type="password" name="password" id="password" value="" {{!
-	                !}}class="form-control form-control-sm" {{!
-	                !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
-	                !}}autocomplete="current-password">
-	        </div>
-	        <div class="login-form-submit form-group">
-	            <button class="btn btn-secondary btn-sm" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
-	        </div>
-	        
-	    </form>
-</div>    
 </div>
-</div>
+
 {{#js}}
     {{^error}}
         {{#autofocusform}}
