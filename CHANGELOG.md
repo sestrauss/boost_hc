@@ -22,3 +22,9 @@
 2022-03-22
 	version 2.1
 	slight update to make login page easier to read; added left border between instructions and login buttons
+
+2023-04-12
+	version 4.1.0
+	renamed theme version to match moodle version
+	new loginform based off of Moodle 4.1 login default
+	new screenshot for updated login page
