@@ -18,7 +18,7 @@
 /*
  * version.php
  *
- * This template is based on Boost for use at Haveroford College. It's primary 
+ * This template is based on Boost for use at Haverford College. It's primary 
  * role is to customize the login page. Thanks to Andrea Kaldrovics at Bryn Mawr 
  * College for her help in developing this child theme. Thanks also to Kristian 
  * Ringer for his excellent explainations on YouTube, https://youtu.be/WLa1ZS3kdWU.
@@ -34,7 +34,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_boost_hc';
 $plugin->version = 2023032801;
-$plugin->release = 'v3.0beta';
+$plugin->release = 'v4.1.1';
 $plugin->requires = '2022111800';   
 $plugin->dependencies = [
     'theme_boost' => '2022112800'
