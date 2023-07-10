@@ -28,3 +28,8 @@
 	renamed theme version to match moodle version
 	new loginform based off of Moodle 4.1 login default
 	new screenshot for updated login page
+	
+2023-07-10
+	version 4.1.1
+	changed login page to use single column
+	
