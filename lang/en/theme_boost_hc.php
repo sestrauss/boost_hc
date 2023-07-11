@@ -18,7 +18,7 @@
 /*
  * theme_boost_hc.php
  *
- * This template is based on Boost for use at Haveroford College. It's primary 
+ * This template is based on Boost for use at Haverford College. It's primary 
  * role is to customize the login page. Thanks to Andrea Kaldrovics at Bryn Mawr 
  * College for her help in developing this child theme. Thanks also to Kristian 
  * Ringer for his excellent explainations on YouTube.
