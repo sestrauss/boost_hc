@@ -32,4 +32,5 @@
 2023-07-10
 	version 4.1.1
 	changed login page to use single column
+	Right block now opens by default
 	
